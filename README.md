@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # My Portfolio
 
 This is a personal portfolio website built with Node.js, Express, and Nodemailer.
@@ -46,3 +47,6 @@ This is a personal portfolio website built with Node.js, Express, and Nodemailer
 ## License
 
 MIT
+=======
+# Portifolio
+>>>>>>> f17aec2e235a3e48f5f4e2dac9256a40c3b534c7
