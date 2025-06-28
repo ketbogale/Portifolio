@@ -36,9 +36,24 @@ $(document).ready(function () {
     $(window).on('load scroll', checkScroll);
     checkScroll();
 
-    // Contact form submission (AJAX)
+    // Contact form submission (AJAX) with validation and feedback
     $('.contact-form').submit(function (e) {
         e.preventDefault();
+        var name = $('input[name="name"]').val().trim();
+        var email = $('input[name="email"]').val().trim();
+        var message = $('textarea[name="message"]').val().trim();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Simple validation
+        if (!name || !email || !message) {
+            showFormMessage('Please fill in all fields.', 'error');
+            return;
+        }
+        if (!emailPattern.test(email)) {
+            showFormMessage('Please enter a valid email address.', 'error');
+            return;
+        }
+
         var form = $(this);
         var formData = form.serialize();
 
@@ -47,14 +62,32 @@ $(document).ready(function () {
             type: 'POST',
             data: formData,
             success: function (response) {
-                alert(response.message);
+                showFormMessage(response.message, 'success');
                 form[0].reset();
             },
-            error: function () {
-                alert('Failed to send message. Please try again later.');
+            error: function (xhr, status, error) {
+                showFormMessage('Failed to send message. Please try again later.', 'error');
+                console.error('Error:', error);
             }
         });
     });
+
+    // Helper function to show feedback messages
+    function showFormMessage(message, type) {
+        var msgDiv = $('#form-message');
+        if (!msgDiv.length) {
+            msgDiv = $('<div id="form-message"></div>');
+            $('.contact-form').prepend(msgDiv);
+        }
+        msgDiv.text(message)
+            .removeClass('success error')
+            .addClass(type)
+            .fadeIn();
+
+        setTimeout(function () {
+            msgDiv.fadeOut();
+        }, 4000);
+    }
 });
 
 // Responsive menu toggle

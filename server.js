@@ -16,33 +16,40 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Contact form endpoint
+// ...existing code...
 app.post('/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
-    // Set up your email transporter (use your real credentials in production)
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'ket1boggood@gmail.com',      // replace with your email
-            pass: 'your_app_password'          // replace with your app password
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
         }
     });
 
+    // Email content
     const mailOptions = {
-        from: email,
-        to: 'ket1boggood@gmail.com',           // your receiving email
-        subject: `Portfolio Contact from ${name}`,
-        text: message
+        from: `"${name}" <${email}>`, // sender info
+        to: process.env.EMAIL_USER,   // your email
+        subject: `New message from ${name}`,
+        html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Message:</strong><br>${message}</p>
+        `
     };
 
     try {
         await transporter.sendMail(mailOptions);
-        res.json({ success: true, message: 'Message sent successfully!' });
+        res.json({ message: "Message sent successfully!" });
     } catch (error) {
-        res.status(500).json({ success: false, message: 'Failed to send message.' });
+        console.error(error);
+        res.status(500).json({ message: "Failed to send message. Please try again later." });
     }
 });
-
+// ...existing code...
 // Fallback to index.html for SPA routing (optional)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

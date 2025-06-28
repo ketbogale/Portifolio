@@ -10,17 +10,19 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Removed duplicate jQuery script in head -->
 </head>
 <body>
     <nav id="mainNav" aria-label="Main navigation">
-        <h1 class="animate__animated animate__fadeInLeft">Ketema</h1>
-        <div class="menu-icon" id="menuIcon" aria-label="Toggle navigation menu">
+        <h1 class="animate__animated animate__fadeInLeft">
+            <i class="fas fa-briefcase" aria-hidden="true"></i> Ketema
+        </h1>
+        <button class="menu-icon" id="menuIcon" aria-label="Toggle navigation menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
-        </div>
-          <ul id="navLinks">
+        </button>
+        <ul id="navLinks">
             <li><a href="#home" class="animate__animated animate__fadeInDown animate__delay-1s">Home</a></li>
             <li><a href="#about" class="animate__animated animate__fadeInDown animate__delay-2s">About</a></li>
             <li><a href="#skills" class="animate__animated animate__fadeInDown animate__delay-3s">Skills</a></li>
@@ -28,6 +30,7 @@
             <li><a href="#contact" class="animate__animated animate__fadeInDown animate__delay-5s">Contact</a></li>
         </ul>
     </nav>
+
     <!-- Home Section -->
     <section id="home">
         <div class="home-grid">
@@ -41,13 +44,15 @@
                 </h2>
                 <div class="social-links">
                     <a href="assets/Ketema_CV.pdf" class="animate__animated animate__fadeInUp animate__delay-2s" download>
-                        <i class="fas fa-download"></i> Download CV
+                        <i class="fas fa-download" aria-hidden="true"></i> Download CV
                     </a>
-                    <a href="https://github.com/ketlemma" target="_blank"><i class="fab fa-github"></i> Github</a>
+                    <a href="https://github.com/ketbogale/Portifolio" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github" aria-hidden="true"></i> Github
+                    </a>
                 </div>
             </div>
             <div class="img">
-                <img src="images/photo_2025-05-11_18-29-16.jpg" alt="Ketema's profile photo">
+                <img src="images/[2]213.jpg" alt="Ketema's profile photo" loading="lazy">
             </div>
         </div>
     </section>
@@ -57,11 +62,16 @@
         <h1 class="animate__animated animate__fadeIn">About</h1>
         <div class="about-grid">
             <div class="about-img">
-                <img src="images/photo_2025-05-11_18-29-16.jpg" alt="Ketema's profile photo">
+                <img src="images/1000032017.jpg" alt="Ketema's profile photo" loading="lazy">
             </div>
             <div class="about-text">
-                <p class="animate__animated animate__fadeIn">
-                    A concise way to introduce yourself, often used on resumes, personal websites, or social media profiles. It highlights key professional aspects, such as experience, skills, and accomplishments, while also allowing for a personal touch, showcasing values and interests.
+                <p>I'm passionate about security and developing secure web applications with expertise in building systems. 
+                    With a strong foundation in cybersecurity principles and modern web development, I bridge the gap between 
+                    functionality and security as more robust systems are required from day to day.
+                </p>
+                <p>
+                    My journey in tech began with networking and evolved into full-stack development with a security focus. 
+                    I specialize in identifying vulnerabilities in web applications and implementing robust security measures.
                 </p>
             </div>
         </div>
@@ -71,13 +81,27 @@
     <section id="skills">
         <h1 class="animate__animated animate__fadeIn">Skills</h1>
         <div class="skills-grid">
-            <div class="skill-item animate__animated animate__fadeIn animate__delay-1s">CSS</div>
-            <div class="skill-item animate__animated animate__fadeIn animate__delay-2s">JavaScript</div>
-            <div class="skill-item animate__animated animate__fadeIn animate__delay-3s">PHP</div>
-            <div class="skill-item animate__animated animate__fadeIn animate__delay-1s">Networking</div>
-            <div class="skill-item animate__animated animate__fadeIn animate__delay-2s">Python</div>
-            <div class="skill-item animate__animated animate__fadeIn animate__delay-3s">Security</div>
-            <div class="skill-item animate__animated animate__fadeIn animate__delay-4s">Web Developer</div>
+            <div class="skill-item animate__animated animate__fadeIn animate__delay-1s">
+                <i class="fab fa-css3-alt" aria-hidden="true"></i> CSS
+            </div>
+            <div class="skill-item animate__animated animate__fadeIn animate__delay-2s">
+                <i class="fab fa-js-square" aria-hidden="true"></i> JavaScript
+            </div>
+            <div class="skill-item animate__animated animate__fadeIn animate__delay-3s">
+                <i class="fab fa-php" aria-hidden="true"></i> PHP
+            </div>
+            <div class="skill-item animate__animated animate__fadeIn animate__delay-1s">
+                <i class="fas fa-network-wired" aria-hidden="true"></i> Networking
+            </div>
+            <div class="skill-item animate__animated animate__fadeIn animate__delay-2s">
+                <i class="fab fa-python" aria-hidden="true"></i> Python
+            </div>
+            <div class="skill-item animate__animated animate__fadeIn animate__delay-3s">
+                <i class="fas fa-shield-alt" aria-hidden="true"></i> Security
+            </div>
+            <div class="skill-item animate__animated animate__fadeIn animate__delay-4s">
+                <i class="fas fa-code" aria-hidden="true"></i> Web Developer
+            </div>
         </div>
     </section>
 
@@ -87,27 +111,39 @@
         <div class="projects-list">
             <div class="project-card animate__animated animate__fadeIn">
                 <p>Tic-Tac-Toe Game</p>
-                <a href="https://github.com/ketlemma/tic-tac-toe" target="_blank"><i class="fab fa-github"></i> Github</a> <!-- Replace with actual URL -->
+                <a href="https://github.com/ketlemma/tic-tac-toe" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
             <div class="project-card animate__animated animate__fadeIn animate__delay-1s">
                 <p>Weather App</p>
-                <a href="https://github.com/ketlemma/weather-app" target="_blank"><i class="fab fa-github"></i> Github</a> <!-- Replace with actual URL -->
+                <a href="https://github.com/ketlemma/weather-app" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
             <div class="project-card animate__animated animate__fadeIn animate__delay-2s">
                 <p>Quiz App</p>
-                <a href="https://github.com/ketlemma/quiz-app" target="_blank"><i class="fab fa-github"></i> Github</a> <!-- Replace with actual URL -->
+                <a href="https://github.com/ketlemma/quiz-app" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
-            <div class="project-card animate__animated animate__fadeIn animate__delay-2s">
+            <div class="project-card animate__animated animate__fadeIn animate__delay-3s">
                 <p>Chat App</p>
-                <a href="https://github.com/ketlemma/chat-app" target="_blank"><i class="fab fa-github"></i> Github</a> <!-- Replace with actual URL -->
+                <a href="https://github.com/ketlemma/chat-app" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
-            <div class="project-card animate__animated animate__fadeIn animate__delay-2s">
+            <div class="project-card animate__animated animate__fadeIn animate__delay-4s">
                 <p>Password Generator</p>
-                <a href="https://github.com/ketlemma/password-generator" target="_blank"><i class="fab fa-github"></i> Github</a> <!-- Replace with actual URL -->
+                <a href="https://github.com/ketlemma/password-generator" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
-            <div class="project-card animate__animated animate__fadeIn animate__delay-2s">
+            <div class="project-card animate__animated animate__fadeIn animate__delay-5s">
                 <p>Hotel Booking System</p>
-                <a href="https://github.com/ketlemma/hotel-booking-system" target="_blank"><i class="fab fa-github"></i> Github</a> <!-- Replace with actual URL -->
+                <a href="https://github.com/ketlemma/hotel-booking-system" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
         </div>
     </section>
@@ -115,18 +151,18 @@
     <!-- Contact Section -->
     <section id="contact">
         <h1 class="animate__animated animate__fadeIn">Contact</h1>
-       <form class="contact-form animate__animated animate__fadeIn" id="contactForm" action="/contact" method="POST">
+        <form class="contact-form animate__animated animate__fadeIn" id="contactForm" action="/contact" method="POST">
             <div class="form-group">
                 <label for="name">Enter Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" required aria-required="true">
             </div>
             <div class="form-group">
                 <label for="email">Enter Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required aria-required="true">
             </div>
             <div class="form-group">
                 <label for="message">Send your feedback or suggestions</label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea id="message" name="message" required aria-required="true"></textarea>
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -135,17 +171,31 @@
     <!-- Footer -->
     <footer class="animate__animated animate__fadeIn">
         <div class="footer-links">
-            <a href="https://www.linkedin.com/in/ketema" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> <!-- Replace with actual URL -->
-            <a href="https://t.me/+DUdPY5JfwDhhMDhk" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://web.facebook.com/ketema.bogale.2025/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a> <!-- Replace with actual URL -->
+            <a href="https://www.linkedin.com/in/ketema" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="https://t.me/+DUdPY5JfwDhhMDhk" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram" aria-hidden="true"></i> Telegram
+            </a>
+            <a href="https://web.facebook.com/ketema.bogale.2025/" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook" aria-hidden="true"></i> Facebook
+            </a>
         </div>
-        <p class="copyright">All Rights Reserved © <span id="year"></span></p>
+        <p>&copy; <span id="currentYear"></span> Ketema Bogale. All rights reserved.</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="javaScript.js"></script>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    <script>
+        // Corrected the ID from 'year' to 'currentYear' to match the HTML
+       // document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Add basic form submission handling
+       // document.getElementById('contactForm').addEventListener('submit', function(e) {
+           // e.preventDefault();
+            // Here you would typically add your form submission logic
+           // alert('Form submitted! (This is a demo. In a real application, this would send the data to a server.)');
+       // });
+    </script>
 </body>
 </html>
