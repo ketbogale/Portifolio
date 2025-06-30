@@ -36,8 +36,14 @@ $(document).ready(function () {
     $(window).on('load scroll', checkScroll);
     checkScroll();
 
-    // Show "Wait for it" message when a project card is clicked
-    $('.project-card').on('click', function () {
+    // Show "Wait for it" message only for project cards without a real link
+    $('.project-card').on('click', function (e) {
+        // If this card contains a real link, let the link work as normal
+        if ($(this).find('a').length > 0) {
+            // Do nothing, let the link handle the click
+            return;
+        }
+        // Otherwise, show the "Wait for it" message
         $('#project-message').remove();
         const msg = $('<div id="project-message">Wait for it, project is on the way!</div>');
         $('body').append(msg);
