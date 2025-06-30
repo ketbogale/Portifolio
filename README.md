@@ -50,4 +50,4 @@ Prerequisites
 - Deploy on [Render](https://render.com/), [Railway](https://railway.app/), or [Cyclic](https://www.cyclic.sh/)
 - Set `EMAIL_USER` and `EMAIL_PASS` as environment variables in your hosting dashboard.
 
-## Getting your link given by web hosting 
+## Get link given by web hosting and Testing
