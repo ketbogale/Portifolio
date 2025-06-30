@@ -673,7 +673,49 @@ section.visible {
         padding: 1.5rem 0.8rem;
     }
 }
+/* Project notification popup */
+#project-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffe066;
+    color: #2c3e50;
+    padding: 1em 2em;
+    border-radius: 8px;
+    font-weight: bold;
+    z-index: 99999;
+    box-shadow: 0 4px 24px #0002;
+    font-size: 1.1em;
+    display: flex;
+    max-width: 90vw;
+    word-break: break-word;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    animation: slideUpFade 1.2s forwards;
+}
+@media (max-width: 500px) {
+    #project-message {
+        padding: 0.7em 0.5em;
+        font-size: 1em;
+    }
+}
 
+@keyframes slideUpFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    70% {
+        opacity: 1;
+        transform: translate(-50%, -40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -80px);
+    }
+}
 /* Contact Section */
 /* Contact Section */
 #contact {
@@ -851,14 +893,46 @@ footer .copyright {
     padding: 0.7em 1em;
     border-radius: 5px;
     font-weight: bold;
+    position: relative;
+    z-index: 9999;
+    /* Add these for centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5em; /* Optional: ensures vertical centering if only one line */
 }
-#form-message.success { 
-    background: #d4edda; 
-    color: #155724; }
-#form-message.error { 
-    background: #f8d7da; 
-    color: #721c24; }
 
+#form-message.success {
+    background: #d4edda;
+    color: #155724;
+    animation: slideUpFade 1.2s forwards;
+}
+
+#form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+@media (max-width: 500px) {
+    #form-message {
+        padding: 0.7em 0.5em;
+        font-size: 1em;
+    }
+}
+/* Animation keyframes */
+@keyframes slideUpFade {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+}
 /* --- Animation Classes --- */
 .animate-delay-1 { animation-delay: 0.1s; }
 .animate-delay-2 { animation-delay: 0.2s; }

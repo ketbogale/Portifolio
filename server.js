@@ -1,3 +1,4 @@
+const axios = require('axios');
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
@@ -16,10 +17,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Contact form endpoint
-// ...existing code...
 app.post('/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
+    // 1. Validate email existence with Hunter.io
+    const hunterApiKey = process.env.HUNTER_API_KEY;
+    const validateUrl = `https://api.hunter.io/v2/email-verifier?email=${encodeURIComponent(email)}&api_key=${hunterApiKey}`;
+
+    try {
+        const response = await axios.get(validateUrl);
+        // Hunter.io returns a "result" field: "deliverable", "undeliverable", "risky", "unknown"
+        if (!response.data.data.result || response.data.data.result !== 'deliverable') {
+            return res.status(400).json({ message: "Please enter a valid, existing email address." });
+        }
+    } catch (err) {
+        console.error('Email validation error:', err);
+        return res.status(500).json({ message: "Email validation failed. Please try again later." });
+    }
+
+    // 2. If valid, send the email as before
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -28,10 +44,9 @@ app.post('/contact', async (req, res) => {
         }
     });
 
-    // Email content
     const mailOptions = {
-        from: `"${name}" <${email}>`, // sender info
-        to: process.env.EMAIL_USER,   // your email
+        from: `"${name}" <${email}>`,
+        to: process.env.EMAIL_USER,
         subject: `New message from ${name}`,
         html: `
             <h2>New Contact Form Submission</h2>
