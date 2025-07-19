@@ -1,4 +1,4 @@
-## My Portfolio
+## Personal Portfolio
 
 This is a personal portfolio website built with HTML, CSS and JavaScript front end
 Node.js, Express, and Nodemailer used in back side
